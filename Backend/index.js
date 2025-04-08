@@ -5,6 +5,7 @@ const dbConnect = require("./config/database");
 const router = require('./routes/employee');
 const adminRouter = require('./routes/admin');
 const createProject = require('./routes/project');
+require('dotenv').config();
 dbConnect();
 
 app.use(cors({ origin: "*" })); // Allow all origins
@@ -15,7 +16,6 @@ app.use(cors({ origin: "*" })); // Allow all origins
 
 app.use(express.json());
 app.use("/api/v1", router, adminRouter ,createProject);
-require('dotenv').config();
 const PORT = process.env.PORT || 4000 ;
 app.listen(PORT,()=>{
     console.log(`Server Started At Port No. ${PORT}`);
